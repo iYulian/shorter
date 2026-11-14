@@ -8,10 +8,6 @@
 mvn clean verify
 java -jar target/uri-shorter-1.0.0.jar
 ```
-В архиве также находится готовый JAR, запускаемый без Maven:
-```bash
-java -jar dist/uri-shorter-1.0.0.jar
-```
 
 ## Работа с приложением
 

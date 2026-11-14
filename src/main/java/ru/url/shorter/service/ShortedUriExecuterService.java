@@ -27,30 +27,30 @@ public class ShortedUriExecuterService {
             System.out.println(URI_NOT_FOUND);
             return;
         }
-            if (uriWrapper.isExpired()) {
-                System.out.println(URI_EXPIRED);
-                return;
-            }
-            if (uriWrapper.getCallCount() >= uriWrapper.getCallLimit()) {
-                System.out.println(CALL_LIMIT_EXCESS);
-                uriWrapper.setActive(false);
-                return;
-            }
-            if (!uriWrapper.isActive()) {
-                System.out.println(URI_NOT_ACTIVE);
-                return;
-            }
-            try {
-                opener.open(uriWrapper.getUri());
-                uriWrapper.setCallCount(uriWrapper.getCallCount() + 1);
-            } catch (Exception e) {
-                System.out.println(URI_EXECUTION_EXCEPTION.formatted(e.getMessage()));
-                return;
-            }
-            if (uriWrapper.getCallCount() >= uriWrapper.getCallLimit()) {
-                System.out.println(LAST_URI_CALL);
-                uriWrapper.setActive(false);
-            }
+        if (uriWrapper.isExpired()) {
+            System.out.println(URI_EXPIRED);
+            return;
+        }
+        if (uriWrapper.getCallCount() >= uriWrapper.getCallLimit()) {
+            System.out.println(CALL_LIMIT_EXCESS);
+            uriWrapper.setActive(false);
+            return;
+        }
+        if (!uriWrapper.isActive()) {
+            System.out.println(URI_NOT_ACTIVE);
+            return;
+        }
+        try {
+            opener.open(uriWrapper.getUri());
+            uriWrapper.setCallCount(uriWrapper.getCallCount() + 1);
+        } catch (Exception e) {
+            System.out.println(URI_EXECUTION_EXCEPTION.formatted(e.getMessage()));
+            return;
+        }
+        if (uriWrapper.getCallCount() >= uriWrapper.getCallLimit()) {
+            System.out.println(LAST_URI_CALL);
+            uriWrapper.setActive(false);
+        }
 
     }
 
